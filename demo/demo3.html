@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <c :tit="123" @ck="fck()" ref="cf"></c>
+</div>
+<template id="cDemo">
+  <div>
+    <h2>我是一个子组件  {{tit}}</h2>
+    <button @click="cck()">问下父组件可以吃饭了没</button>
+    <h3 v-if="flag">问的结果：{{str}}</h3>
+  </div>
+</template>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    components:{
+      c: {
+        template: '#cDemo',
+        props:{
+          tit:{
+            type: Number,
+            required: true
+          }
+        },
+        data() {
+          return {
+            title: '哈哈哈',
+            str: '',
+            flag: false
+          }
+        },
+        methods: {
+          cck: function(){
+            console.log('调用我了吗');
+            this.$emit('ck')
+          },
+          jg(val){
+            this.flag = true
+            this.str = val
+          },
+          aaa(){
+            console.log('测试');
+          }
+        }
+      }
+    },
+    data() {
+      return {
+        message: 'Hello Word'
+      }
+    },
+    methods: {
+      fck() {
+        this.$refs.cf.jg("就知道吃")
+      }
+    }
+  })
+</script>
+</body>
+</html>

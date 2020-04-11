@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <router-link to="/a">去第一个组件</router-link>
+  <router-link to="/b">去第二个组件</router-link>
+  <p>===================================</p>
+  <router-view></router-view>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<script>
+  const c = {template: '<h2>默认组件</h2>'}
+  const c1 = {template: '<h2>我是第一个组件</h2>'}
+  const c2 = {template: '<h2>我是第二个组件</h2>'}
+
+  const router = new VueRouter({
+    routes:[
+      {path:'/', component:c},
+      {path:'/a', component:c1},
+      {path:'/b', component:c2}
+    ]
+  })
+
+  new Vue({
+    el: '#app',
+    router,
+    data() {
+      return {
+        message: 'Hello Word'
+      }
+    }
+  })
+</script>
+</body>
+</html>

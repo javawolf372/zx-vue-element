@@ -22,6 +22,9 @@ const constantRoutes = [
       path: '/demo',
       component: () => import('@/views/demo/index')
     }, {
+      path: '/echartDemo',
+      component: () => import('@/views/echartDemo/index')
+    }, {
       path: '/404-*',
       component: () => import('@/components/Page404')
     }]
